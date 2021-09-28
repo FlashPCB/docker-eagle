@@ -28,10 +28,7 @@ RUN apt-get -y install man-db
 RUN mkdir -p /opt/eagle-9.6.2
 RUN chown user:user /opt/eagle-9.6.2
 
-ADD vnc-passwd-abcd1234 /home/user/.vnc/passwd
-RUN chown -R user:user /home/user/.vnc
-RUN chmod 700 /home/user/.vnc
-RUN chmod 600 /home/user/.vnc/passwd
+RUN /bin/bash -c "echo -e 'abcd1234\nabcd1234\nn' | vncpasswd"; echo;
 ADD bin /home/user/bin
 RUN chown -R user:user /home/user/bin
 
