@@ -1,5 +1,9 @@
 # docker-eagle
 
+We here at FlashPCB are using this container to convert `.brd` files to Gerber files using a CAMJOB. Eagle allows CAMJOBs to run via a command line interface. However, every new installation of Eagle needs to be opened once via the GUI so that you can enter your license information. This docker container is equipped with VNC capabilities so that one can view the Eagle GUI.
+
+# Eagle
+
 Autodesk EAGLE (formerly by CadSoft) is popular PCB design software, with a schematic editor, extensive part libraries, PCB layout editor, track auto-routing and more.
 
 EAGLE is available under both freeware and commercial licenses using a license key file.
@@ -22,6 +26,9 @@ To run the container:
 
 This will make the VNC server visible on localhost port 32768. Next, run a VNC client:
 
+On MacOS you can open spotlight and enter `vnc://0.0.0.0:32768` to get on the container.
+
+Or something like this might work.
 ```
 xtigervncviewer -SecurityTypes VncAuth 0.0.0.0:32768
 ```
