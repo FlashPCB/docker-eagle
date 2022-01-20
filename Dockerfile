@@ -12,7 +12,7 @@ RUN apt-get -y install wget bzip2
 RUN adduser --gecos 'User Name,,,' --disabled-password user
 
 # Do this early, to cache the huge binary download
-RUN wget -q -O /tmp/eagle.tar.gz https://www.autodesk.com/eagle-download-lin
+ADD Autodesk_EAGLE_9.6.2_English_Linux_64bit.tar.gz /opt
 
 # A timezone needs to be set before tzdata is installed.
 RUN ln -sf /usr/share/zoneinfo/UTC /etc/localtime
@@ -39,11 +39,9 @@ RUN chown -R user:user /home/user/bin
 USER user
 WORKDIR /opt
 
-RUN tar zxpf /tmp/eagle.tar.gz
 RUN mkdir /home/user/eagle
 
 WORKDIR /home/user
 CMD /home/user/bin/start.sh
 
 USER root
-RUN rm /tmp/eagle.tar.gz

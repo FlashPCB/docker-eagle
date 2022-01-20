@@ -14,7 +14,18 @@ This repository packages the latest (at commit time) 64-bit Linux release of EAG
 
 First install docker (see [Docker Installation](http://docs.docker.com/installation/) )
 
-Then run: `docker build -t eagle962 .`
+Download https://www.autodesk.com/eagle-download-lin into this directory
+
+Then to build this image and send it to the repository, use:
+
+```shell
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com
+docker build -t eagle .
+docker tag eagle:latest $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/eagle:latest
+docker tag eagle:9.6.2 $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/eagle:9.6.2
+docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/eagle:latest
+docker push $AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/eagle:9.6.2
+```
 
 ## RUNNING
 
