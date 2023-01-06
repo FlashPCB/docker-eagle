@@ -30,6 +30,8 @@ RUN chown user:user /opt/eagle-9.6.2
 
 RUN /bin/bash -c "echo -e 'abcd1234\nabcd1234\nn' | vncpasswd"; echo;
 ADD bin /home/user/bin
+ADD config /root/.config/Autodesk
+ADD share /root/.local/share/Eagle
 RUN chown -R user:user /home/user/bin
 
 # ------------------------------------------------------------------------
